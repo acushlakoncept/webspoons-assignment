@@ -31,7 +31,7 @@
         <table class="min-w-full divide-y divide-cool-gray-200">
           <thead>
           <tr>
-            <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-cool-gray-500 uppercase tracking-wider">Title</th>
+            <th onclick="sort_table(usersTableBody, 0, asc1); asc1 *= -1; asc2 = 1; asc3 = 1;" class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-cool-gray-500 uppercase tracking-wider">Title</th>
             <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-cool-gray-500 uppercase tracking-wider">Name</th>
             <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-cool-gray-500 uppercase tracking-wider">Email</th>
             <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-cool-gray-500 uppercase tracking-wider">Phone</th>
@@ -39,7 +39,7 @@
             <th colspan="1" class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-cool-gray-500 uppercase tracking-wider"></th>
           </tr>
           </thead>
-          <tbody class="bg-white divide-y divide-cool-gray-200">
+          <tbody class="bg-white divide-y divide-cool-gray-200" id="usersTableBody">
           <% @users.each do |user| %>
             <tr class="js--userRow">
               <td class="px-6 py-4 whitespace-nowrap text-sm leading-5 text-cool-gray-900">
@@ -108,7 +108,7 @@
             });
             // replace existing rows with new rows created from the sorted array
             for (i = 0; i < rlen; i++) {
-                rows[i].innerHTML = "<td>" + arr[i].join("</td><td>") + "</td>";
+                rows[i].innerHTML = "<td class='px-6 py-4 whitespace-nowrap text-sm leading-5 text-cool-gray-900'>" + arr[i].join("</td><td class='px-6 py-4 whitespace-nowrap text-sm leading-5 text-cool-gray-900'>") + "</td>";
             }
         }
 </script>

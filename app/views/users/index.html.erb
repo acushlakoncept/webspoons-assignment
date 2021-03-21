@@ -7,10 +7,16 @@
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="-ml-4 -mt-2 flex items-center justify-between flex-wrap sm:flex-no-wrap">
       <div>
-        <h2 class="max-w-6xl mx-auto mt-8 px-4 text-lg leading-6 font-medium text-cool-gray-900 sm:px-6 lg:px-8">
-          Users
-        </h2>
+        <h1 class="max-w-6xl mx-auto mt-8 px-4 text-lg leading-6 font-medium text-cool-gray-900 sm:px-6 lg:px-8">
+          All Users
+        </h1>
       </div>
+
+      <div class="inline-flex mt-3 w-2/5 form-group">
+<input type="text" name="search" id="searchInput" onkeyup="filterList()" class="form-control p-2" placeholder="search users" />
+</div>
+
+
       <div>
         <span class="inline-flex rounded-md shadow-sm">
           <%= link_to 'New User', new_user_path, class: "btn btn-primary", data: { action: "click->user-modal#open", 'turbo-frame': 'user' } %>
@@ -35,7 +41,7 @@
           </thead>
           <tbody class="bg-white divide-y divide-cool-gray-200">
           <% @users.each do |user| %>
-            <tr>
+            <tr class="js--userRow">
               <td class="px-6 py-4 whitespace-nowrap text-sm leading-5 text-cool-gray-900">
                 <%= user.title %>
               </td>
@@ -63,3 +69,46 @@
     </div>
   </div>
 </div>
+
+
+<script>
+   filterList = () => {
+       let searchInput, filter, tr, i, td, txtValue;
+       
+       searchInput = document.getElementById('searchInput');
+       filter = searchInput.value.toUpperCase();
+       trs = document.querySelectorAll('.js--userRow');
+       trs.forEach(tr => tr.style.display = [...tr.children].find(td => td.innerHTML.toUpperCase().includes(filter)) ? '' : 'none');
+   };
+
+   let users, asc1 = 1,
+            asc2 = 1,
+            asc3 = 1;
+        window.onload = function () {
+            users = document.getElementById("usersTableBody");
+        }
+
+   sort_table = (tbody, col, asc) => {
+            var rows = tbody.rows,
+                rlen = rows.length,
+                arr = new Array(),
+                i, j, cells, clen;
+            // fill the array with values from the table
+            for (i = 0; i < rlen; i++) {
+                cells = rows[i].cells;
+                clen = cells.length;
+                arr[i] = new Array();
+                for (j = 0; j < clen; j++) {
+                    arr[i][j] = cells[j].innerHTML;
+                }
+            }
+            // sort the array by the specified column number (col) and order (asc)
+            arr.sort(function (a, b) {
+                return (a[col] == b[col]) ? 0 : ((a[col] > b[col]) ? asc : -1 * asc);
+            });
+            // replace existing rows with new rows created from the sorted array
+            for (i = 0; i < rlen; i++) {
+                rows[i].innerHTML = "<td>" + arr[i].join("</td><td>") + "</td>";
+            }
+        }
+</script>

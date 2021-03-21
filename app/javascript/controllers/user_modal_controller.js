@@ -18,7 +18,7 @@ export default class extends Modal {
     this.lockScroll();
 
     // Unhide the modal
-    document.addEventListener("postForm:load", () => {
+    document.addEventListener("userForm:load", () => {
       this.containerTarget.classList.remove(this.toggleClass);
     });
 

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TurboModal</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
+  <%= turbo_include_tags %>
+  <%= stimulus_include_tags %>
+</head>
+
+<body class="h-full font-sans antialiased font-normal leading-normal bg-gray-100">
+<%= yield %>
+</body>
+</html>

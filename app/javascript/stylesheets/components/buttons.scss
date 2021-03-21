@@ -1,0 +1,128 @@
+.btn {
+  @apply shadow-sm justify-center inline-flex text-base sm:text-sm px-4 py-2 font-medium rounded-md no-underline items-center;
+
+  //height: 40px;
+  //line-height: 40px;
+  transition: ease 0.3s background, ease 0.3s transform, ease 0.2s color;
+
+  &:hover,
+  &:focus {
+    @apply cursor-pointer;
+  }
+
+  &:focus {
+    @apply ring-2 ring-offset-2 ring-primary-500 outline-none;
+  }
+}
+
+.btn-primary {
+  @apply bg-primary-600 text-white;
+
+  &:hover,
+  &:focus {
+    @apply bg-primary-700 text-white;
+  }
+
+  &.outline {
+    @apply bg-transparent border border-primary-500 text-primary-500 shadow-none;
+
+    &:hover,
+    &:focus {
+      @apply bg-primary-500 text-white;
+    }
+  }
+}
+
+.btn-secondary {
+  @apply bg-secondary-600 text-white;
+
+  &:hover,
+  &:focus {
+    @apply bg-secondary-500 text-white;
+  }
+
+  &.outline {
+    @apply bg-transparent border border-secondary-600 text-secondary-600 shadow-none;
+
+    &:hover,
+    &:focus {
+      @apply bg-secondary-500 text-white;
+    }
+  }
+}
+
+.btn-tertiary {
+  @apply bg-tertiary-600 text-white;
+
+  &:hover,
+  &:focus {
+    @apply bg-tertiary-500 text-white;
+  }
+
+  &.outline {
+    @apply bg-transparent border border-tertiary-500 text-tertiary-500 shadow-none;
+
+    &:hover,
+    &:focus {
+      @apply bg-tertiary-500 text-white;
+    }
+  }
+}
+
+.btn-danger {
+  @apply bg-danger-600 text-white;
+
+  &:hover,
+  &:focus {
+    @apply bg-danger-500 text-white;
+  }
+
+  &.outline {
+    @apply bg-transparent border border-danger-500 text-danger-500 shadow-none;
+
+    &:hover,
+    &:focus {
+      @apply bg-danger-500 text-white;
+    }
+  }
+}
+
+.btn-white {
+  @apply bg-white border border-gray-300 text-gray-700;
+
+  &:hover,
+  &:focus {
+    @apply bg-gray-50;
+  }
+
+  &.primary {
+    @apply text-primary-600;
+  }
+
+  &.secondary {
+    @apply text-secondary-600;
+  }
+
+  &.tertiary {
+    @apply text-tertiary-600;
+  }
+
+  &.gray {
+    @apply text-gray-700;
+  }
+}
+
+.btn-link {
+  @apply text-primary-500 bg-transparent;
+
+  &:hover,
+  &:focus {
+    @apply text-primary-600;
+
+    transform: none;
+  }
+}
+
+.btn-expanded {
+  @apply block w-full;
+}

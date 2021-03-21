@@ -1,0 +1,19 @@
+.alert {
+  @apply border border-gray-500 bg-gray-100 text-gray-700 p-4 rounded-lg font-sans;
+
+  &.alert-info {
+    @apply border-primary-500 bg-primary-100 text-primary-600;
+  }
+
+  &.alert-success {
+    @apply border-secondary-600 bg-secondary-100 text-secondary-700;
+  }
+
+  &.alert-error {
+    @apply border-danger-500 bg-danger-100 text-danger-600;
+  }
+
+  &.alert-warning {
+    @apply border-yellow-500 bg-yellow-100 text-yellow-600;
+  }
+}

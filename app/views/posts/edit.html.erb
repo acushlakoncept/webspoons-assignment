@@ -1,0 +1,7 @@
+<%= turbo_frame_tag 'post' do %>
+  <turbo-stream target="post_form" action="replace">
+    <template>
+      <%= render partial: "posts/form", locals: { post: @post } %>
+    </template>
+  </turbo-stream>
+<% end %>

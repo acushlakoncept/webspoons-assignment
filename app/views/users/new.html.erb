@@ -1,0 +1,8 @@
+
+<%= turbo_frame_tag 'user' do %>
+  <turbo-stream target="user_form" action="replace">
+    <template>
+      <%= render partial: "users/form", locals: { user: @user } %>
+    </template>
+  </turbo-stream>
+<% end %>

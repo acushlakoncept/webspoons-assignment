@@ -53,6 +53,7 @@
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-sm leading-5 text-cool-gray-500">
                 <%= link_to 'Edit', edit_user_path(user), class: "btn btn-secondary", data: { action: "click->user-modal#open", 'turbo-frame': 'user' } %>
+                <%= link_to 'Delete', user, class: "btn btn-danger outline sm:mt-0", method: :delete, data: { confirm: "Are you sure?" } %>
               </td>
             </tr>
           <% end %>

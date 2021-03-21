@@ -8,7 +8,7 @@
     <div class="-ml-4 -mt-2 flex items-center justify-between flex-wrap sm:flex-no-wrap">
       <div>
         <h1 class="max-w-6xl mx-auto mt-8 px-4 text-lg leading-6 font-medium text-cool-gray-900 sm:px-6 lg:px-8">
-          All Users
+          <%= link_to 'All Users', '/', class: "navbar-brand pl-2 pr-2" %>
         </h1>
       </div>
 
@@ -25,39 +25,43 @@
     </div>
   </div>
 
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col mt-2">
       <div class="align-middle min-w-full overflow-x-auto shadow overflow-hidden sm:rounded-lg">
         <table class="min-w-full divide-y divide-cool-gray-200">
           <thead>
           <tr>
-            <th onclick="sort_table(usersTableBody, 0, asc1); asc1 *= -1; asc2 = 1; asc3 = 1;" class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-cool-gray-500 uppercase tracking-wider">Title</th>
-            <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-cool-gray-500 uppercase tracking-wider">Name</th>
-            <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-cool-gray-500 uppercase tracking-wider">Email</th>
-            <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-cool-gray-500 uppercase tracking-wider">Phone</th>
-            <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-cool-gray-500 uppercase tracking-wider">Status</th>
-            <th colspan="1" class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-cool-gray-500 uppercase tracking-wider"></th>
+            <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-cool-gray-500 uppercase tracking-wider">S/N</th>
+            <th onclick="sort_table(usersTableBody, 0, asc1); asc1 *= -1; asc2 = 1; asc3 = 1;" class="px-2 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-cool-gray-500 uppercase tracking-wider">Title</th>
+            <th onclick="sort_table(usersTableBody, 1, asc1); asc1 *= -1; asc2 = 1; asc3 = 1;" class="px-2 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-cool-gray-500 uppercase tracking-wider">Name</th>
+            <th onclick="sort_table(usersTableBody, 2, asc1); asc1 *= -1; asc2 = 1; asc3 = 1;" class="px-2 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-cool-gray-500 uppercase tracking-wider">Email</th>
+            <th onclick="sort_table(usersTableBody, 3, asc1); asc1 *= -1; asc2 = 1; asc3 = 1;" class="px-2 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-cool-gray-500 uppercase tracking-wider">Phone</th>
+            <th onclick="sort_table(usersTableBody, 4, asc1); asc1 *= -1; asc2 = 1; asc3 = 1;" class="px-2 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-cool-gray-500 uppercase tracking-wider">Status</th>
+            <th class="px-2 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-cool-gray-500 uppercase tracking-wider"></th>
           </tr>
           </thead>
           <tbody class="bg-white divide-y divide-cool-gray-200" id="usersTableBody">
-          <% @users.each do |user| %>
+          <% @users.each_with_index do |user, indx| %>
             <tr class="js--userRow">
-              <td class="px-6 py-4 whitespace-nowrap text-sm leading-5 text-cool-gray-900">
+               <td class="px-2 py-4 whitespace-nowrap text-sm leading-5 text-cool-gray-900">
+                <%= indx + 1 %>
+              </td>
+              <td class="px-2 py-4 whitespace-nowrap text-sm leading-5 text-cool-gray-900">
                 <%= user.title %>
               </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm leading-5 text-cool-gray-500">
+              <td class="px-2 py-4 whitespace-nowrap text-sm leading-5 text-cool-gray-500">
                 <%= user.name %>
               </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm leading-5 text-cool-gray-500">
+              <td class="px-2 py-4 whitespace-nowrap text-sm leading-5 text-cool-gray-500">
                 <%= user.email %>
               </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm leading-5 text-cool-gray-500">
+              <td class="px-2 py-4 whitespace-nowrap text-sm leading-5 text-cool-gray-500">
                 <%= user.phone %>
               </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm leading-5 text-cool-gray-500">
+              <td class="px-2 py-4 whitespace-nowrap text-sm leading-5 text-cool-gray-500">
                 <%= user.status %>
               </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm leading-5 text-cool-gray-500">
+              <td class="px-2 py-4 whitespace-nowrap text-sm leading-5 text-cool-gray-500">
                 <%= link_to 'Edit', edit_user_path(user), class: "btn btn-secondary", data: { action: "click->user-modal#open", 'turbo-frame': 'user' } %>
                 <%= link_to 'Delete', user, class: "btn btn-danger outline sm:mt-0", method: :delete, data: { confirm: "Are you sure?" } %>
               </td>
@@ -65,6 +69,11 @@
           <% end %>
           </tbody>
         </table>
+
+        <div class="pagination text-center flex justify-center">
+            <%= will_paginate %>
+       </div>
+
       </div>
     </div>
   </div>

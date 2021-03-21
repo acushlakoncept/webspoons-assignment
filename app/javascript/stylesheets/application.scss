@@ -7,3 +7,8 @@
 @import 'components/icons';
 
 @import "tailwindcss/utilities";
+
+.pagination > * {
+    margin: 0 5px;
+    padding: 2px 5px;
+}

@@ -14,7 +14,7 @@
 
 ## Live Demo
 
-[Live Demo](https://webspoon-assesment.herokuapp.com/)
+[Live Demo](https://webspoon-ruby.herokuapp.com/)
 
 ## Getting Started
 
